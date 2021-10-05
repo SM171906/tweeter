@@ -8,7 +8,8 @@ nav{
   padding-top: 1.5em;
   width: 100%;
   justify-content: space-between; 
-  position: -webkit-sticky;   position: sticky;   
+  position: -webkit-sticky;   
+  position: sticky;   
   top: 0;   
   padding: 5px;
 }

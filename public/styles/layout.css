@@ -24,3 +24,20 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+ nav {
+  font-family: 'Bungee', cursive;
+}
+
+
+ .container{
+  width: 90%;
+  background-color: #f4f1ec;
+  margin: auto;
+  
+}
+.tweet-container{
+  width: 90%;
+  color:black;
+  margin: auto;
+  
+}
