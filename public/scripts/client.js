@@ -36,60 +36,69 @@ const data = [
 $(document).ready(() => {
   function createTweetElement(obj) {
     let $tweet = `<article class="tweet">
-  <header class = "article-tweet">
-    <div class = "name">
-      <img src = "${obj.user.avatars}">
-      <h5>${obj.user.name}</h5>
-    </div>
-    
-    <h5 class="username">${obj.user.handle}</h5>
-  
-  </header>
-  <div class = "tweet-body">
-  <p>${obj.content.text}</p>
-  </div>
-  <footer>
-    <span>${timeago.format(obj.created_at)}</span>
-    <div class="flags">
-      <i class="fas fa-heart"></i>
-      <i class="fas fa-flag"></i>
-      <i class="fas fa-retweet"></i>
-    
-    </div>
-  </footer>
-  </article>`
-
+                    <header class = "article-tweet">
+                      <div class = "name">
+                        <img src = "${obj.user.avatars}">
+                        <h5>${obj.user.name}</h5>
+                      </div>
+                      
+                      <h5 class="username">${obj.user.handle}</h5>
+                    
+                    </header>
+                    <div class = "tweet-body">
+                    <p>${obj.content.text}</p>
+                    </div>
+                    <footer>
+                      <span>${timeago.format(obj.created_at)}</span>
+                      <div class="flags">
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-flag"></i>
+                        <i class="fas fa-retweet"></i>
+                      
+                      </div>
+                    </footer>
+                    </article>`
 
     return $tweet;
-
   }
+
   const renderTweets = function (tweets) {
     // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
-    let tweetsContent = "";
-    for (tweet of tweets) {
-      tweetsContent = tweetsContent + createTweetElement(tweet);
+    const $tweetContainer = $(".tweetContainer");
+    $tweetContainer.empty();     // clear out blog-container
+    // repopulate blog-container
+    for (const tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      $tweetContainer.prepend($tweet);
     }
-    return tweetsContent;
+
   }
-  renderTweets(data);
 
   $('form').submit(function (event) {
     event.preventDefault();
-   
-    
+    $.ajax({
+      method: "POST",
+      url: "/tweets",
+      data: $(this).serialize(),
+      success: success,
+      dataType: "json"
+    })
+  });
+  function loadtweets () {
+    $.ajax({
+      method: "GET",
+      url: "/tweets",
+      data: data,
+      success: success,
+      dataType: "json"
+    });
+
+  renderTweets(data);
 });
 
-//test driver
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-    "handle": "@SirIsaac"
-  },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
-  },
-  "created_at": 1461116232227
-}
+
+
+
+
