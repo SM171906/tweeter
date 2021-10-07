@@ -66,12 +66,13 @@ $(document).ready(() => {
     // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
-    const $tweetContainer = $(".tweetContainer");
-    $tweetContainer.empty();     // clear out blog-container
+    const $tweetContainer = $(".tweet-container");
+    //$tweetContainer.empty();     // clear out blog-container
     // repopulate blog-container
     for (const tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $tweetContainer.prepend($tweet);
+      // const $tweet = createTweetElement(tweet);
+      $tweetContainer.prepend(createTweetElement(tweet));
+
     }
 
   };
@@ -105,22 +106,35 @@ $(document).ready(() => {
         loadTweets();
       },
       dataType: "json",
-      
+    
     })
+    .then(function(response) {
+      console.log(response);
+      loadTweets();
+    })
+
     
   });
-  function loadtweets () {
-    $.ajax({
-      method: "GET",
-      url: "/tweets",
-      //data: data,
-      success: (data) => {renderTweets(data)},
-      dataType: "json"
-    });
-  };
-  loadtweets();
+  // function loadTweets () {
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/tweets",
+  //     //data: data,
+  //     success: (data) => {renderTweets(data)},
+  //     dataType: "json"
+  //   });
+  // };
+  // loadTweets();
+  function loadTweets (){
+    $.ajax("/tweets").then(function(tweets){
+      renderTweets(tweets);
+      
+    })  
+  }
+  loadTweets();
 
-  renderTweets(data);
+
+  //renderTweets(data);
 });
 
 

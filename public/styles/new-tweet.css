@@ -1,6 +1,6 @@
 form {
   display: flex;
-  flex-direction: column; //font-family: sans-serif;
+  flex-direction: column; 
 }
 
 button {
