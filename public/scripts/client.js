@@ -74,26 +74,51 @@ $(document).ready(() => {
       $tweetContainer.prepend($tweet);
     }
 
-  }
+  };
+
+  $(".longLength").hide();
+  $(".empty").hide();
 
   $('form').submit(function (event) {
     event.preventDefault();
+    $(".longLength").hide();
+    $(".empty").hide();
+    const text = $("#tweet-text").val();
+
+    if(!text){
+      $(".empty").show();
+      return;
+    }
+    if (text.length > 140) {
+      // alert("Oops! Tweet content is too long");
+      $(".longLength").show();
+      return;
+
+    }
     $.ajax({
       method: "POST",
       url: "/tweets",
       data: $(this).serialize(),
-      success: success,
-      dataType: "json"
+      success:(response) =>{
+        $(".longLength").hide();
+        $(".empty").hide();
+        loadTweets();
+      },
+      dataType: "json",
+      
     })
+    
   });
   function loadtweets () {
     $.ajax({
       method: "GET",
       url: "/tweets",
-      data: data,
-      success: success,
+      //data: data,
+      success: (data) => {renderTweets(data)},
       dataType: "json"
     });
+  };
+  loadtweets();
 
   renderTweets(data);
 });

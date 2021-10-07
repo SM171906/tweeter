@@ -1,8 +1,8 @@
-form{
+form {
   display: flex;
-  flex-direction: column;
-  
+  flex-direction: column; //font-family: sans-serif;
 }
+
 button {
   background-color: blanchedalmond;
   padding: 4px;
@@ -11,17 +11,21 @@ button {
   color: white;
   display: flex;
 }
-.button-148{
-padding-top: 10px;
-display: flex;
-justify-content: space-between;
-align-items:baseline;
+
+.button-148 {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 #tweet-text {
   display: flex;
-  border: 0 none ;
+  border: 0 none;
   outline: none;
   border-bottom: 5px solid black;
-  background-color: #f4f1ec ;
+  background-color: #f4f1ec;
 }
+/* span{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+} */
