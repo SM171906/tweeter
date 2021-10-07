@@ -46,7 +46,7 @@ $(document).ready(() => {
                     
                     </header>
                     <div class = "tweet-body">
-                    <p>${obj.content.text}</p>
+                    <p>${escape(obj.content.text)}</p>
                     </div>
                     <footer>
                       <span>${timeago.format(obj.created_at)}</span>
@@ -137,6 +137,11 @@ $(document).ready(() => {
   //renderTweets(data);
 });
 
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 
 
