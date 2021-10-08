@@ -1,6 +1,6 @@
 form {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 button {
@@ -26,6 +26,11 @@ button {
   border-bottom: 5px solid black;
   background-color: #f4f1ec;
 }
-/* span{
-  font-family:Georgia, 'Times New Roman', Times, serif;
-} */
+
+@media screen and(min-width:1024px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+}
