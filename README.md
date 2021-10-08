@@ -19,3 +19,4 @@ This repository is the starter code for the project: Students will fork and clon
 ##Screen Shots
 !["Screenshots of tweet desktop view"](https://github.com/SM171906/tweeter/blob/master/docs/Desktop-view.png)
 !["Screenshots of tweet mobile view"](https://github.com/SM171906/tweeter/blob/master/docs/Mobile-view.png)
+!["Screenshots of tweet-box view"](https://github.com/SM171906/tweeter/blob/master/docs/Tweet-box.png)
