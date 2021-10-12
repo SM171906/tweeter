@@ -100,31 +100,25 @@ $(document).ready(() => {
       method: "POST",
       url: "/tweets",
       data: $(this).serialize(),
-      success:(response) =>{
-        $(".longLength").hide();
-        $(".empty").hide();
-        loadTweets();
-      },
-      dataType: "json",
+      // success:(response) =>{
+      //   $(".longLength").hide();
+      //   $(".empty").hide();
+      //   loadTweets();
+      // },
+      // dataType: "json",
     
     })
     .then(function(response) {
       console.log(response);
       loadTweets();
+      $(".longLength").hide();
+      $(".empty").hide();
+      $("#tweet-text").val("");
     })
 
     
   });
-  // function loadTweets () {
-  //   $.ajax({
-  //     method: "GET",
-  //     url: "/tweets",
-  //     //data: data,
-  //     success: (data) => {renderTweets(data)},
-  //     dataType: "json"
-  //   });
-  // };
-  // loadTweets();
+  
   function loadTweets (){
     $.ajax("/tweets").then(function(tweets){
       renderTweets(tweets);

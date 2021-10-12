@@ -9,3 +9,21 @@
   align-items: center;
   
 }
+@media screen and (min-width:1024px) {
+  .main-header{
+    margin-top: 50px;
+    margin-left: 50px;
+    height: 50%;
+    width: 25%;
+    background-color:orange;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+  }
+
+  
+}
