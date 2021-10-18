@@ -29,10 +29,6 @@ const data = [
   }
 ];
 
-
-
-
-
 $(document).ready(() => {
   function createTweetElement(obj) {
     let $tweet = `<article class="tweet">
@@ -67,14 +63,11 @@ $(document).ready(() => {
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
     const $tweetContainer = $(".tweet-container");
-    //$tweetContainer.empty();     // clear out blog-container
+    $tweetContainer.empty();     // clear out blog-container
     // repopulate blog-container
     for (const tweet of tweets) {
-      // const $tweet = createTweetElement(tweet);
       $tweetContainer.prepend(createTweetElement(tweet));
-
     }
-
   };
 
   $(".longLength").hide();
@@ -86,49 +79,35 @@ $(document).ready(() => {
     $(".empty").hide();
     const text = $("#tweet-text").val();
 
-    if(!text){
+    if (!text) {
       $(".empty").show();
       return;
     }
     if (text.length > 140) {
-      // alert("Oops! Tweet content is too long");
       $(".longLength").show();
       return;
-
     }
     $.ajax({
       method: "POST",
       url: "/tweets",
-      data: $(this).serialize(),
-      // success:(response) =>{
-      //   $(".longLength").hide();
-      //   $(".empty").hide();
-      //   loadTweets();
-      // },
-      // dataType: "json",
-    
+      data: $(this).serialize()
     })
-    .then(function(response) {
-      console.log(response);
-      loadTweets();
-      $(".longLength").hide();
-      $(".empty").hide();
-      $("#tweet-text").val("");
-    })
-
-    
+      .then(function (response) {
+        console.log(response);
+        loadTweets();
+        $(".longLength").hide();
+        $(".empty").hide();
+        $("#tweet-text").val("");
+        $(".counter").text("140");
+      })
   });
-  
-  function loadTweets (){
-    $.ajax("/tweets").then(function(tweets){
+
+  function loadTweets() {
+    $.ajax("/tweets").then(function (tweets) {
       renderTweets(tweets);
-      
-    })  
+    })
   }
   loadTweets();
-
-
-  //renderTweets(data);
 });
 
 const escape = function (str) {

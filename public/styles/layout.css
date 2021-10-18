@@ -43,23 +43,21 @@ nav {
   margin: auto;
 }
 
- @media screen and (min-width: 1024px) {
-  #cloud{
+@media screen and (min-width: 1024px) {
+  #cloud {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 80px;
-
   }
 }
+
 @media screen and (min-width: 1024px) {
-  .container{
+  .container {
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 5%;
-    
-    
   }
-} 
+}
